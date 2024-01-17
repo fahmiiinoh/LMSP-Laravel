@@ -42,6 +42,8 @@ Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name
 //admin logout
 Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
 Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
+Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
+
 
 }); //End of ADMIN group middleware
 
