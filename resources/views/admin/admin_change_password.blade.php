@@ -48,7 +48,7 @@
         <div class="col-lg-8">
             <div class="card">
 
-                <form method="POST" action="{{route ('admin.change.password')}}" enctype="multipart/form-data">
+                <form method="POST" action="{{route ('admin.password.update')}}" enctype="multipart/form-data">
                     @csrf 
 
                 <div class="card-body">
@@ -81,8 +81,15 @@
                             <h6 class="mb-0">Confirm New Password</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            <input type="password" name="confirm_new_password" class="form-control" id="confirm_new_password"  />
+                            <input type="password" name="new_password_confirmation" class="form-control" id="new_password_confirmation"  />
 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-9 text-secondary">
+                            <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
                         </div>
                     </div>
                 </div>
