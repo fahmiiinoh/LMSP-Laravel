@@ -52,13 +52,22 @@ Route::POST('/admin/update/password', [AdminController::class, 'AdminPasswordUpd
 
 }); //End of ADMIN group middleware
 
-//adminlogin
-Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
-
-
 //Instructor Group Middleware
 Route::middleware(['auth','roles:instructor'])->group(function(){
-
+//redirect to instructor dashboard
 Route::get('/instructor/dashboard', [InstructorController::class, 'InstructorDashboard'])->name('instructor.dashboard');
+Route::get('/instructor/logout', [InstructorController::class, 'InstructorLogout'])->name('instructor.logout');
+//page route
+Route::get('/instructor/profile', [InstructorController::class, 'InstructorProfile'])->name('instructor.profile');
+Route::get('/instructor/change/password', [InstructorController::class, 'InstructorChangePassword'])->name('instructor.change.password');
+//data route
+Route::POST('/instructor/profile/store', [InstructorController::class, 'InstructorProfileStore'])->name('instructor.profile.store');
+Route::POST('/instructor/update/password', [InstructorController::class, 'InstructorPasswordUpdate'])->name('instructor.password.update');
 
 }); //End of instructor group middleware
+
+
+//adminLogin
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
+//instructorLogin
+Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
