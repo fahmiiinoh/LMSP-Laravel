@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-4 responsive-column-half">
                     <div class="category-item">
-                        <img  class="cat__img lazy" src="images/img-loading.png" data-src="images/img1.jpg" alt="Category image">
+                        <img  class="cat__img lazy" src="{{asset('frontend/images/img-loading.png')}}" data-src="images/img1.jpg" alt="Category image">
                         <div class="category-content">
                             <div class="category-inner">
                                 <h3 class="cat__title"><a href="#">Business Study</a></h3>
@@ -32,7 +32,7 @@
                 </div><!-- end col-lg-4 -->
                 <div class="col-lg-4 responsive-column-half">
                     <div class="category-item">
-                        <img  class="cat__img lazy" src="images/img-loading.png" data-src="images/img2.jpg" alt="Category image">
+                        <img  class="cat__img lazy" src="{{asset('frontend/images/img-loading.png')}}" data-src="images/img2.jpg" alt="Category image">
                         <div class="category-content">
                             <div class="category-inner">
                                 <h3 class="cat__title"><a href="#">Art & Design</a></h3>
@@ -44,7 +44,7 @@
                 </div><!-- end col-lg-4 -->
                 <div class="col-lg-4 responsive-column-half">
                     <div class="category-item">
-                        <img  class="cat__img lazy" src="images/img-loading.png" data-src="images/img3.jpg" alt="Category image">
+                        <img  class="cat__img lazy" src="{{asset('frontend/images/img-loading.png')}}" data-src="images/img3.jpg" alt="Category image">
                         <div class="category-content">
                             <div class="category-inner">
                                 <h3 class="cat__title"><a href="#">Web Development</a></h3>
@@ -56,7 +56,7 @@
                 </div><!-- end col-lg-4 -->
                 <div class="col-lg-4 responsive-column-half">
                     <div class="category-item">
-                        <img  class="cat__img lazy" src="images/img-loading.png" data-src="images/img4.jpg" alt="Category image">
+                        <img  class="cat__img lazy" src="{{asset('frontend/images/img-loading.png')}}" data-src="images/img4.jpg" alt="Category image">
                         <div class="category-content">
                             <div class="category-inner">
                                 <h3 class="cat__title"><a href="#">Health & Fitness</a></h3>
@@ -68,7 +68,7 @@
                 </div><!-- end col-lg-4 -->
                 <div class="col-lg-4 responsive-column-half">
                     <div class="category-item">
-                        <img  class="cat__img lazy" src="images/img-loading.png" data-src="images/img5.jpg" alt="Category image">
+                        <img  class="cat__img lazy" src="{{asset('frontend/images/img-loading.png')}}" data-src="images/img5.jpg" alt="Category image">
                         <div class="category-content">
                             <div class="category-inner">
                                 <h3 class="cat__title"><a href="#">Photography</a></h3>
@@ -80,7 +80,7 @@
                 </div><!-- end col-lg-4 -->
                 <div class="col-lg-4 responsive-column-half">
                     <div class="category-item">
-                        <img  class="cat__img lazy" src="images/img-loading.png" data-src="images/img6.jpg" alt="Category image">
+                        <img  class="cat__img lazy" src="{{asset('frontend/images/img-loading.png')}}" data-src="images/img6.jpg" alt="Category image">
                         <div class="category-content">
                             <div class="category-inner">
                                 <h3 class="cat__title"><a href="#">Mathematics</a></h3>
