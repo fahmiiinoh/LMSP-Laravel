@@ -50,7 +50,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2">
                         <div class="logo-box">
-                            <a href="index.html" class="logo"><img src="images/logo.png" alt="logo"></a>
+                            <a href="/" class="logo"><img src="{{asset('frontend/images/logo.png')}}" alt="logo"></a>
                             <div class="user-btn-action">
                                 <div class="search-menu-toggle icon-element icon-element-sm shadow-sm mr-2" data-toggle="tooltip" data-placement="top" title="Search">
                                     <i class="la la-search"></i>
@@ -200,13 +200,7 @@
                             <nav class="main-menu">
                                 <ul>
                                     <li>
-                                        <a href="#">Home <i class="la la-angle-down fs-12"></i></a>
-                                        <ul class="dropdown-menu-item">
-                                            <li><a href="index.html">Home One</a></li>
-                                            <li><a href="home-2.html">Home Two</a></li>
-                                            <li><a href="home-3.html">Home Three</a></li>
-                                            <li><a href="home-4.html">Home four</a></li>
-                                        </ul>
+                                        <a href="/">Home <i></i></a>
                                     </li>
                                     <li>
                                         <a href="#">courses <i class="la la-angle-down fs-12"></i></a>
