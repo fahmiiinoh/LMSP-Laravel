@@ -19,12 +19,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'Index'])->name('index');
 
+//user group middleware
 Route::get('/dashboard', function () {
     return view('frontend.dashboard.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    //page route
     Route::get('/dashboard/profile', [UserController::class, 'UserProfile'])->name('user.profile');
+    Route::get('/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
+    //user logout
+    Route::get('/logout', [UserController::class, 'UserLogout'])->name('user.logout');
+    //data route
+    Route::POST('/profile/store', [UserController::class, 'UserProfileStore'])->name('user.profile.store');
+    Route::POST('/update/password', [UserController::class, 'UserPasswordUpdate'])->name('user.password.update');
 
 });
 

@@ -215,7 +215,7 @@
                                                 </div>
                                                 <ul class="cart-dropdown-menu after-none p-0 notification-dropdown-menu">
                                                     <li class="menu-heading-block d-flex align-items-center">
-                                                        <a href="teacher-detail.html" class="avatar-sm flex-shrink-0 d-block">
+                                                        <a href="/dashboard/profile" class="avatar-sm flex-shrink-0 d-block">
                                                             <img class="rounded-full img-fluid" src="{{  (!empty($profileData->photo)) ? url('upload/user_images/'.$profileData->photo) : url('upload/no_image.jpg')}}" alt="Avatar image">
                                                         </a>
                                                         <div class="ml-2">
@@ -279,7 +279,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="index.html">
+                                                                <a href="{{route('user.logout')}}">
                                                                     <i class="la la-power-off mr-1"></i> Logout
                                                                 </a>
                                                             </li>
