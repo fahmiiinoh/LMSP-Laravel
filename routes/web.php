@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -53,7 +54,18 @@ Route::get('/admin/change/password', [AdminController::class, 'AdminChangePasswo
 Route::POST('/admin/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
 Route::POST('/admin/update/password', [AdminController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
 
+//Category Route
+Route::controller(CategoryController::class)->group(function(){
 
+    //Page route
+    Route::get('/all/category','AllCategory')->name('all.category');
+    Route::get('/add/category','AddCategory')->name('add.category');
+
+    //data route
+    Route::POST('/category/store', 'StoreCategory')->name('store.category');
+
+
+});
 
 }); //End of ADMIN group middleware
 
