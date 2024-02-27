@@ -60,9 +60,12 @@ Route::controller(CategoryController::class)->group(function(){
     //Page route
     Route::get('/all/category','AllCategory')->name('all.category');
     Route::get('/add/category','AddCategory')->name('add.category');
+    Route::get('/edit/category/{id}','EditCategory')->name('edit.category');
+    Route::get('/delete/category/{id}','DeleteCategory')->name('delete.category');
 
     //data route
     Route::POST('/category/store', 'StoreCategory')->name('store.category');
+    Route::POST('/update/category', 'UpdateCategory')->name('update.category');
 
 
 });
