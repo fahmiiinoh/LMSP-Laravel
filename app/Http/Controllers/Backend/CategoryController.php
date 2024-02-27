@@ -6,22 +6,25 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\SubCategory;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
 class CategoryController extends Controller
 {
+    //Category Section
     public function AllCategory(){
 
         $category = Category::latest()->get();
         return view('admin.backend.category.all_category',compact('category'));
 
     } //End Method
-
+    
     public function AddCategory(){
         return view('admin.backend.category.add_category');
     }
 
+    //create function
     public function StoreCategory(Request $request){
 
         if($request->file('category_image')){
@@ -89,7 +92,7 @@ class CategoryController extends Controller
             ]);
 
             $notification = array(
-                'message' => 'Category Updated without successfully',
+                'message' => 'Category Updated without image successfully',
                 'alert-type' => 'success'
             );
             return redirect()->route('all.category')->with($notification);
@@ -111,6 +114,39 @@ class CategoryController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
+
+    }
+
+    //SubCategory Section
+    public function AllSubCategory(){
+
+        $subcategory = SubCategory::latest()->get();
+        return view('admin.backend.subcategory.all_sub_category',compact('subcategory'));
+
+    } //End Method
+
+    public function AddSubCategory(){
+
+        $category = Category::latest()->get();
+        return view('admin.backend.subcategory.add_sub_category', compact('category'));
+
+    } //End Method
+
+    public function StoreSubCategory(Request $request){
+
+        SubCategory::insert([
+
+            'category_id' => $request->category_id,
+            'sub_category_name' => $request->sub_category_name,
+            'sub_category_slug' => strtolower(str_replace(' ','-',$request->sub_category_name)), 
+
+        ]);
+
+        $notification = array(
+            'message' => 'SubCategory Inserted successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.sub.category')->with($notification);
 
     }
 }
