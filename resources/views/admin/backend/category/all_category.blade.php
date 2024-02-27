@@ -42,8 +42,8 @@
 										<td>{{$item ->category_name}}</td>
                                         
 										<td>
-                                        <a href="" class="btn btn-info px-5 radius-30">Edit</a>
-                                        <a href="" class="btn btn-danger px-5 radius-30">Delete</a>
+                                        <a href="{{route('edit.category', $item->id)}}" class="btn btn-info px-5 radius-30">Edit</a>
+                                        <a href="{{route('delete.category', $item->id)}}" class="btn btn-danger px-5 radius-30" id="delete">Delete</a>
                                         </td>
 									</tr>
                                     @endforeach
@@ -54,13 +54,6 @@
 				</div>
 
 			</div>
-
-
-
-
-
-
-
 
 
 
