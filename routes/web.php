@@ -61,12 +61,27 @@ Route::controller(CategoryController::class)->group(function(){
     Route::get('/all/category','AllCategory')->name('all.category');
     Route::get('/add/category','AddCategory')->name('add.category');
     Route::get('/edit/category/{id}','EditCategory')->name('edit.category');
-    Route::get('/delete/category/{id}','DeleteCategory')->name('delete.category');
 
     //data route
     Route::POST('/category/store', 'StoreCategory')->name('store.category');
     Route::POST('/update/category', 'UpdateCategory')->name('update.category');
+    Route::get('/delete/category/{id}','DeleteCategory')->name('delete.category');
 
+});
+
+//Sub-Category Route
+Route::controller(CategoryController::class)->group(function(){
+
+    //Page route
+    Route::get('/all/sub/category','AllSubCategory')->name('all.sub.category');
+    Route::get('/add/sub/category','AddSubCategory')->name('add.sub.category');
+    Route::get('/edit/category/{id}','EditCategory')->name('edit.category');
+
+
+    //data route
+    Route::POST('/sub/category/store', 'StoreSubCategory')->name('store.sub.category');
+    Route::POST('/update/category', 'UpdateCategory')->name('update.category');
+    Route::get('/delete/category/{id}','DeleteCategory')->name('delete.category');
 
 });
 
