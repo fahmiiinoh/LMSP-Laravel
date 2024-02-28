@@ -100,4 +100,39 @@ class AdminController extends Controller
         );
         return back()->with($notification);
     } 
+
+    //instructor registration
+    public function BecomeInstructor(){
+        return view('frontend.instructor.reg_instructor');
+    } 
+
+    public function RegisterInstructor(Request $request){
+
+        $request->validate([
+
+            'name' => ['required','string','max:255'],
+            'email' => ['required','string','unique:users'],
+
+        ]);
+
+        User::insert([
+
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'password' => Hash::make($request->password),
+            'role' => 'instructor',
+            'status' => '0',
+
+        ]);
+
+        $notification = array(
+            'message' => 'Instructor Registered successfully! Please wait for admin confirmation',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('instructor.login')->with($notification);
+
+    }
 }

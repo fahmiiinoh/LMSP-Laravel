@@ -20,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'Index'])->name('index');
 
+//instructor registration
+Route::get('/become/instructor', [AdminController::class, 'BecomeInstructor'])->name('become.instructor');
+Route::POST('/register/instructor', [AdminController::class, 'RegisterInstructor'])->name('instructor.register');
+
 //user group middleware
 Route::get('/dashboard', function () {
     return view('frontend.dashboard.index');
@@ -75,7 +79,7 @@ Route::controller(CategoryController::class)->group(function(){
     //Page route
     Route::get('/all/sub/category','AllSubCategory')->name('all.sub.category');
     Route::get('/add/sub/category','AddSubCategory')->name('add.sub.category');
-    Route::get('/edit/category/{id}','EditSubCategory')->name('edit.sub.category');
+    Route::get('/edit/sub/category/{id}','EditSubCategory')->name('edit.sub.category');
 
 
     //data route
@@ -106,3 +110,4 @@ Route::POST('/instructor/update/password', [InstructorController::class, 'Instru
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 //instructorLogin
 Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
+
