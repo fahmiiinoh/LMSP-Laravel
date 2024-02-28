@@ -129,7 +129,7 @@ class AdminController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Instructor Registered successfully! Please wait for admin confirmation',
+            'message' => 'Instructor Registered successfully. Please wait for admin confirmation',
             'alert-type' => 'success'
         );
         return redirect()->route('instructor.login')->with($notification);
