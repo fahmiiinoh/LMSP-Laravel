@@ -149,4 +149,38 @@ class CategoryController extends Controller
         return redirect()->route('all.sub.category')->with($notification);
 
     }
+
+    public function EditSubCategory($id){
+        $category = Category::latest()->get();
+        $subcategory = SubCategory::find($id);
+        return view('admin.backend.subcategory.edit_sub_category',compact('category','subcategory'));
+    }
+
+    public function UpdateSubCategory(Request $request){
+
+        $subcat_id = $request->id;
+        SubCategory::find($subcat_id)->update([
+            'category_id' => $request->category_id,
+            'sub_category_name' => $request->sub_category_name,
+            'sub_category_slug' => strtolower(str_replace(' ','-',$request->sub_category_name)), 
+        ]);
+
+        $notification = array(
+            'message' => 'SubCategory Updated successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.sub.category')->with($notification);
+    }
+
+    public function DeleteSubCategory($id){
+
+        SubCategory::find($id)->delete();
+
+        $notification = array(
+            'message' => 'SubCategory Delete successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+
+    }
 }
