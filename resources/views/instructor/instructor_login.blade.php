@@ -11,6 +11,7 @@
 	<link href="{{asset('backend/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
 	<link href="{{asset('backend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
 	<link href="{{asset('backend/assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 	<!-- loader-->
 	<link href="{{asset('backend/assets/css/pace.min.css')}}" rel="stylesheet" />
 	<script src="{{asset('backend/assets/js/pace.min.js')}}"></script>
@@ -115,12 +116,13 @@
 	</div>
 	<!--end wrapper-->
 	<!-- Bootstrap JS -->
-	<script src="assets/js/bootstrap.bundle.min.js"></script>
+	<script src="{{asset('backend/assets/js/bootstrap.bundle.min.js')}}"></script>
 	<!--plugins-->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
-	<script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+	<script src="{{asset('backend/assets/js/jquery.min.js')}}"></script>
+	<script src="{{asset('backend/assets/plugins/simplebar/js/simplebar.min.js')}}"></script>
+	<script src="{{asset('backend/assets/plugins/metismenu/js/metisMenu.min.js')}}"></script>
+	<script src="{{asset('backend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	<!--Password show & hide js -->
 	<script>
 		$(document).ready(function () {
@@ -138,8 +140,33 @@
 			});
 		});
 	</script>
+	
 	<!--app JS-->
 	<script src="{{asset('backend/assets/js/app.js')}}"></script>
+
+		<!-- toaster -->
+		<script>
+		@if(Session::has('message'))
+		var type = "{{ Session::get('alert-type','info') }}"
+		switch(type){
+			case 'info':
+			toastr.info(" {{ Session::get('message') }} ");
+			break;
+
+			case 'success':
+			toastr.success(" {{ Session::get('message') }} ");
+			break;
+
+			case 'warning':
+			toastr.warning(" {{ Session::get('message') }} ");
+			break;
+
+			case 'error':
+			toastr.error(" {{ Session::get('message') }} ");
+			break; 
+		}
+		@endif 
+		</script>
 </body>
 
 </html>
