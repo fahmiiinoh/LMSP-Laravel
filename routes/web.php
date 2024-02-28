@@ -75,13 +75,13 @@ Route::controller(CategoryController::class)->group(function(){
     //Page route
     Route::get('/all/sub/category','AllSubCategory')->name('all.sub.category');
     Route::get('/add/sub/category','AddSubCategory')->name('add.sub.category');
-    Route::get('/edit/category/{id}','EditCategory')->name('edit.category');
+    Route::get('/edit/category/{id}','EditSubCategory')->name('edit.sub.category');
 
 
     //data route
     Route::POST('/sub/category/store', 'StoreSubCategory')->name('store.sub.category');
-    Route::POST('/update/category', 'UpdateCategory')->name('update.category');
-    Route::get('/delete/category/{id}','DeleteCategory')->name('delete.category');
+    Route::POST('/update/sub/category', 'UpdateSubCategory')->name('update.sub.category');
+    Route::get('/delete/sub/category/{id}','DeleteSubCategory')->name('delete.sub.category');
 
 });
 
