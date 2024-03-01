@@ -89,6 +89,22 @@ Route::controller(CategoryController::class)->group(function(){
 
 });
 
+//Manage Instructor Route 
+Route::controller(AdminController::class)->group(function(){
+
+    //Page route
+    Route::get('/all/instructor','AllInstructor')->name('all.instructor');
+    // Route::get('/add/sub/category','AddSubCategory')->name('add.sub.category');
+    // Route::get('/edit/sub/category/{id}','EditSubCategory')->name('edit.sub.category');
+
+
+    //data route
+    Route::POST('/update/instructor/status', 'UpdateInstructorStatus')->name('update.instructor.status');
+    // Route::POST('/update/sub/category', 'UpdateSubCategory')->name('update.sub.category');
+    // Route::get('/delete/sub/category/{id}','DeleteSubCategory')->name('delete.sub.category');
+
+});
+
 }); //End of ADMIN group middleware
 
 //Instructor Group Middleware

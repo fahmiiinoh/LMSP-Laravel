@@ -135,4 +135,25 @@ class AdminController extends Controller
         return redirect()->route('instructor.login')->with($notification);
 
     }
+
+    //All Instructor 
+    public function AllInstructor(){
+        $allinstructor = User::where('role', 'instructor')->latest()->get();
+        return view('admin.backend.instructor.all_instructor',compact('allinstructor'));
+    }
+    
+    public function UpdateInstructorStatus(Request $request){
+
+        $userId = $request->input('user_id');
+        $isChecked = $request->input('is_checked', 0);
+
+        $user = User::find($userId);
+        if($user){
+            $user->status = $isChecked;
+            $user->save();
+        }
+
+        return response()->json(['message' => 'Instructor Status Updated Successfully!']);
+
+    }
 }
