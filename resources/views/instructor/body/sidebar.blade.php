@@ -1,3 +1,10 @@
+@php
+
+$id = Auth::user()->id;
+$instructorId = App\Models\User::find($id);
+$status = $instructorId->status;
+
+@endphp
 
 
 <div class="sidebar-wrapper" data-simplebar="true">
@@ -13,15 +20,15 @@
 			 </div>
 			<!--navigation-->
 			<ul class="metismenu" id="menu">
-				
+
 				<li>
-					<a href="{{route('admin.dashboard')}}">
+					<a href="{{route('instructor.dashboard')}}">
 						<div class="parent-icon"><i class='bx bx-home-alt'></i>
 						</div>
 						<div class="menu-title">Dashboard</div>
 					</a>
 				</li>
-
+				@if	($status === '1')
 				<li class="menu-label">UI Elements</li>
 				<li>
 					<a href="javascript:;" class="has-arrow">
@@ -79,6 +86,7 @@
 						</li>
 					</ul>
 				</li>
+				@else
 				<li>
 					<a href="https://themeforest.net/user/codervent" target="_blank">
 						<div class="parent-icon"><i class="bx bx-support"></i>
@@ -87,5 +95,6 @@
 					</a>
 				</li>
 			</ul>
+			@endif
 			<!--end navigation-->
 		</div>

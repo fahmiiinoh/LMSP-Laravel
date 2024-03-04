@@ -1,8 +1,19 @@
 @extends('instructor.instructor_dashboard')
 @section('instructor')
 
+@php
+
+$id = Auth::user()->id;
+$instructorId = App\Models\User::find($id);
+$status = $instructorId->status;
+
+@endphp
+
 <div class="page-content">
-				<div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+
+	@if	($status === '1')
+	<h4>Instructor Account Is<span class="text-success"> ACTIVE</span></h4>
+	<div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
                    <div class="col">
 					 <div class="card radius-10 border-start border-0 border-4 border-info">
 						<div class="card-body">
@@ -238,5 +249,12 @@
 
 
 			</div>
+	@else
+	<h4>Instructor Account Is<span class="text-danger"> INACTIVE</span></h4>
+	<p class="text-danger"><b>Please wait for admin for account approval</b></p>
+	@endif
+
+
+
 
 @endsection
