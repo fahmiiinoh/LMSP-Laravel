@@ -3,8 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -118,6 +120,17 @@ Route::get('/instructor/change/password', [InstructorController::class, 'Instruc
 //data route
 Route::POST('/instructor/profile/store', [InstructorController::class, 'InstructorProfileStore'])->name('instructor.profile.store');
 Route::POST('/instructor/update/password', [InstructorController::class, 'InstructorPasswordUpdate'])->name('instructor.password.update');
+
+//Manage Instructor Route 
+Route::controller(CourseController::class)->group(function(){
+
+    //Page route
+    Route::get('/all/course','AllCourse')->name('all.course');
+    Route::get('/add/course','AddCourse')->name('add.course');
+
+    //data route
+    Route::get('/subcategory/ajax/{category_id}','GetSubCategory');
+});
 
 }); //End of instructor group middleware
 
