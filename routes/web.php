@@ -130,6 +130,7 @@ Route::controller(CourseController::class)->group(function(){
 
     //data route
     Route::get('/subcategory/ajax/{category_id}','GetSubCategory');
+    Route::post('/store/course','StoreCourse')->name('store.course');
 });
 
 }); //End of instructor group middleware
