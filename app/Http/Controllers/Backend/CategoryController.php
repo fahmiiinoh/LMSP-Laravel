@@ -24,7 +24,7 @@ class CategoryController extends Controller
         return view('admin.backend.category.add_category');
     }
 
-    //create function
+    //add function
     public function StoreCategory(Request $request){
 
         if($request->file('category_image')){

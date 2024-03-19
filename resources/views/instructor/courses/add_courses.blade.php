@@ -21,8 +21,10 @@
                 <div class="card">
 							<div class="card-body p-4">
 								<h5 class="mb-4">Add Course</h5>
-								<form class="row g-3" action="{{route('store.category')}}" method="post" id="categoryForm" enctype="multipart/form-data">
+								
+                                <form class="row g-3" action="{{route('store.course')}}" method="post" id="courseForm" enctype="multipart/form-data">
                                     @csrf
+
 									<div class="form-group col-md-6">
 										<label for="input1" class="form-label">Course Name</label>
 										<input type="text" class="form-control" name="course_name" id="course_name" >
@@ -114,6 +116,21 @@
 										<textarea class="form-control" name="prerequisites" id="prerequisites" rows="3"></textarea>
 									</div>
 
+                                    <p>Course Goals</p>
+
+                                    <div class="row add_item">
+        
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                                    <label for="goals" class="form-label"> Goals </label>
+                                                    <input type="text" name="course_goals[]" id="goals" class="form-control" placeholder="Goals ">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6" style="padding-top: 30px;">
+                                            <a class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> Add More..</a>
+                                        </div>
+                                    </div> <!---end row-->
+
                                     <div class="form-group col-md-12">
 										<label for="input1" class="form-label">Description</label>
 										<textarea class="form-control" name="description" id="myeditorinstance" ></textarea>
@@ -155,47 +172,92 @@
 
 			</div>
 
-            <script type="text/javascript">
-    $(document).ready(function (){
-        $('#categoryForm').validate({
-            rules: {
-                category_name: {
-                    required : true,
-                }, 
-                category_image: {
-                    required : true,
-                }, 
-                
-            },
-            messages :{
-                category_name: {
-                    required : 'Please Enter Course Name',
-                }, 
-                category_image: {
-                    required : 'Please Enter Course Image',
-                }, 
-                 
+            <div style="visibility: hidden">
+                <div class="whole_extra_item_add" id="whole_extra_item_add">
+                    <div class="whole_extra_item_delete" id="whole_extra_item_delete">
+                        <div class="container mt-2">
+                            <div class="row">
+                            
+                            
+                            <div class="form-group col-md-6">
+                                <label for="goals">Goals</label>
+                                <input type="text" name="course_goals[]" id="goals" class="form-control" placeholder="Goals  ">
+                            </div>
+                            <div class="form-group col-md-6" style="padding-top: 20px">
+                                <span class="btn btn-success btn-sm addeventmore"><i class="fa fa-plus-circle">Add</i></span>
+                                <span class="btn btn-danger btn-sm removeeventmore"><i class="fa fa-minus-circle">Remove</i></span>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>      
 
-            },
-            errorElement : 'span', 
-            errorPlacement: function (error,element) {
-                error.addClass('invalid-feedback');
-                element.closest('.form-group').append(error);
-            },
-            highlight : function(element, errorClass, validClass){
-                $(element).addClass('is-invalid');
-            },
-            unhighlight : function(element, errorClass, validClass){
-                $(element).removeClass('is-invalid');
-            },
-        });
-    });
-    
-</script>
+ 
+            <!----For Section-------->
+            <script type="text/javascript">
+            $(document).ready(function(){
+                var counter = 0;
+                $(document).on("click",".addeventmore",function(){
+                        var whole_extra_item_add = $("#whole_extra_item_add").html();
+                        $(this).closest(".add_item").append(whole_extra_item_add);
+                        counter++;
+                });
+                $(document).on("click",".removeeventmore",function(event){
+                        $(this).closest("#whole_extra_item_delete").remove();
+                        counter -= 1
+                });
+            });
+            </script>
+
+
+            <script type="text/javascript">
+                $(document).ready(function (){
+                    $('#courseForm').validate({
+                        rules: {
+                            course_name: {
+                                required : true,
+                            }, 
+                            course_image: {
+                                required : true,
+                            }, 
+                            course_title: {
+                                required : true,
+                            }, 
+                            
+                        },
+                        messages :{
+                            course_name: {
+                                required : 'Please Enter Course Name',
+                            }, 
+                            course_image: {
+                                required : 'Please Enter Course Image',
+                            }, 
+                            course_title: {
+                                required : 'Please Enter Course Title',
+                            }, 
+                            
+
+                        },
+                        errorElement : 'span', 
+                        errorPlacement: function (error,element) {
+                            error.addClass('invalid-feedback');
+                            element.closest('.form-group').append(error);
+                        },
+                        highlight : function(element, errorClass, validClass){
+                            $(element).addClass('is-invalid');
+                        },
+                        unhighlight : function(element, errorClass, validClass){
+                            $(element).removeClass('is-invalid');
+                        },
+                    });
+                });
+                
+            </script>
 
             <script type="text/javascript">
                 $(document).ready(function(){
-                    $('#category_image').change(function(e){
+                    $('#course_image').change(function(e){
                         var reader = new FileReader();
                         reader.onload = function(e){
                             $('#showImage').attr('src',e.target.result);
