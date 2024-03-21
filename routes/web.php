@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//homepage
 Route::get('/', [UserController::class, 'Index'])->name('index');
 
 //instructor registration
@@ -48,7 +48,6 @@ require __DIR__.'/auth.php';
 
 //ADMIN Group Middleware
 Route::middleware(['auth','roles:admin'])->group(function(){
-
 //redirect to admin dashboard
 Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 //admin logout
@@ -60,7 +59,7 @@ Route::get('/admin/change/password', [AdminController::class, 'AdminChangePasswo
 Route::POST('/admin/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
 Route::POST('/admin/update/password', [AdminController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
 
-//Category Route
+//Category (ADMIN) Route
 Route::controller(CategoryController::class)->group(function(){
 
     //Page route
@@ -75,15 +74,12 @@ Route::controller(CategoryController::class)->group(function(){
 
 });
 
-//Sub-Category Route
+//Sub-Category (ADMIN) Route
 Route::controller(CategoryController::class)->group(function(){
-
     //Page route
     Route::get('/all/sub/category','AllSubCategory')->name('all.sub.category');
     Route::get('/add/sub/category','AddSubCategory')->name('add.sub.category');
     Route::get('/edit/sub/category/{id}','EditSubCategory')->name('edit.sub.category');
-
-
     //data route
     Route::POST('/sub/category/store', 'StoreSubCategory')->name('store.sub.category');
     Route::POST('/update/sub/category', 'UpdateSubCategory')->name('update.sub.category');
@@ -91,19 +87,12 @@ Route::controller(CategoryController::class)->group(function(){
 
 });
 
-//Manage Instructor Route 
+//Manage Instructor (ADMIN)Route 
 Route::controller(AdminController::class)->group(function(){
-
     //Page route
     Route::get('/all/instructor','AllInstructor')->name('all.instructor');
-    // Route::get('/add/sub/category','AddSubCategory')->name('add.sub.category');
-    // Route::get('/edit/sub/category/{id}','EditSubCategory')->name('edit.sub.category');
-
-
     //data route
     Route::POST('/update/instructor/status', 'UpdateInstructorStatus')->name('update.instructor.status');
-    // Route::POST('/update/sub/category', 'UpdateSubCategory')->name('update.sub.category');
-    // Route::get('/delete/sub/category/{id}','DeleteSubCategory')->name('delete.sub.category');
 
 });
 
@@ -121,21 +110,25 @@ Route::get('/instructor/change/password', [InstructorController::class, 'Instruc
 Route::POST('/instructor/profile/store', [InstructorController::class, 'InstructorProfileStore'])->name('instructor.profile.store');
 Route::POST('/instructor/update/password', [InstructorController::class, 'InstructorPasswordUpdate'])->name('instructor.password.update');
 
-//Manage Instructor Route 
+// Manage Course (Instructor) Route 
 Route::controller(CourseController::class)->group(function(){
-
     //Page route
     Route::get('/all/course','AllCourse')->name('all.course');
     Route::get('/add/course','AddCourse')->name('add.course');
-
+    Route::get('/edit/course/{id}','EditCourse')->name('edit.course');
     //data route
     Route::get('/subcategory/ajax/{category_id}','GetSubCategory');
     Route::post('/store/course','StoreCourse')->name('store.course');
+    Route::post('/update/course','UpdateCourse')->name('update.course');
+    Route::post('/update/course/image','UpdateImageCourse')->name('update.course.image');
+    Route::post('/update/course/video','UpdateVideoCourse')->name('update.course.video');
+    Route::post('/update/course/goals','UpdateGoalCourse')->name('update.course.goal');
+    Route::get('/delete/course/{id}','DeleteCourse')->name('delete.course');
 });
 
 }); //End of instructor group middleware
 
-
+//PAGE-LOGIN
 //adminLogin
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 //instructorLogin
